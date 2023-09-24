@@ -4,4 +4,6 @@
     <string name="number">Enter your phone number</string>
     <string name="here">Here</string>
     <string name="submit">SUBMIT</string>
+    <string name="app_title">Jiraf Delivery App</string>
+    <string name="havent_received_code">If you haven\'t received the code make sure that \nentered number is correct.</string>
 </resources>
