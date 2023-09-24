@@ -3,4 +3,5 @@
     <string name="login_registration">Login/Registration</string>
     <string name="number">Enter your phone number</string>
     <string name="here">Here</string>
+    <string name="submit">SUBMIT</string>
 </resources>

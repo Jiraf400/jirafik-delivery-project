@@ -4,24 +4,13 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_waves_light"
-        tools:context=".activities.PhoneVerificationActivity">
-
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/login_registration"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textSize="36sp"
-            android:layout_marginTop="36dp"
-            android:textAlignment="center" />
+        tools:context=".activities.UserLoginActivity"
+        android:background="@drawable/bg_waves_light">
 
     <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="126dp"
+            android:layout_marginTop="88dp"
             android:layout_marginBottom="88dp"
             app:cardBackgroundColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +19,6 @@
             app:cardElevation="8dp"
             app:cardUseCompatPadding="true">
 
-
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -38,36 +26,41 @@
                 android:paddingTop="16dp">
 
             <TextView
-                    android:id="@+id/tv_enter_phone"
+                    android:id="@+id/tv_fill_fields"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/number"
-                    android:textSize="26sp"
-                    android:layout_marginHorizontal="36dp"
+                    android:text="Fill authorization fields"
                     android:layout_centerHorizontal="true"
+                    android:textSize="28sp"
+                    android:layout_marginHorizontal="36dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/roboto" />
 
             <EditText
-                    android:id="@+id/et_phone_here"
+                    android:id="@+id/et_login_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="120dp"
+                    style="@style/Widget.AppCompat.EditText"
                     android:paddingVertical="16dp"
-                    android:hint="@string/here"
-                    android:inputType="phone"
-                    android:fontFamily="@font/roboto" />
+                    android:hint="Email"
+                    android:textSize="20sp"
+                    android:inputType="textEmailAddress"
+                    android:layout_centerVertical="true"
+                    android:layout_below="@id/tv_fill_fields"
+                    android:layout_marginTop="64dp"
+                    android:fontFamily="@font/roboto"/>
 
             <EditText
-                    android:id="@+id/et_code_here"
+                    android:id="@+id/et_login_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="120dp"
                     android:paddingVertical="16dp"
-                    android:hint="@string/here"
-                    android:inputType="phone"
-                    android:visibility="gone"
-                    android:fontFamily="@font/roboto" />
+                    android:hint="Password"
+                    android:textSize="20sp"
+                    android:layout_centerVertical="true"
+                    android:layout_below="@id/et_login_email"
+                    android:layout_marginTop="64dp"
+                    android:fontFamily="@font/roboto"/>
 
             <Button
                     android:id="@+id/btn_phone_submit"
@@ -83,27 +76,8 @@
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginHorizontal="112dp"
-                    android:fontFamily="@font/roboto_light" />
-
-            <Button
-                    android:id="@+id/btn_code_submit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/Widget.Material3.FloatingActionButton.Surface"
-                    android:text="@string/submit"
-                    android:textSize="24sp"
-                    android:textColor="@color/light_blue"
-                    android:backgroundTint="#98c1d9"
-                    android:layout_marginBottom="32dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginHorizontal="112dp"
-                    android:visibility="gone"
-                    android:fontFamily="@font/roboto_light" />
-
+                    android:fontFamily="@font/roboto_light"/>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
