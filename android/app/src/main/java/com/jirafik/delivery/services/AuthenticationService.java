@@ -1,17 +1,10 @@
 package com.jirafik.delivery.services;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
 import android.content.Context;
-import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.jirafik.delivery.activities.PhoneVerificationActivity;
-import com.jirafik.delivery.activities.UserLoginActivity;
-import com.jirafik.delivery.activities.UserRegisterActivity;
 
 public class AuthenticationService {
 
@@ -23,11 +16,15 @@ public class AuthenticationService {
     }
 
     public void enterPhoneNumber(EditText et_pv_phone, EditText et_pv_code,
-                                 TextView tv_enter_phone, TextView tv_notification) {
+                                 TextView tv_enter_phone, TextView tv_notification, UserAuthListener authListener) {
 
         if (tv_enter_phone.getText().toString().contains("Enter verification code")) {
             if (et_pv_code.getText().toString().equals("123456")) {
-//HERE SHOULD BE LOGIC FOR SENDING PHONE TO SERVER
+                String phone = getPhoneNumber();
+
+                //Logic to send phone to server
+
+                authListener.onRegister();
 
                 Toast.makeText(context, "SUCCESS", Toast.LENGTH_SHORT).show();
             } else {
@@ -52,18 +49,29 @@ public class AuthenticationService {
         et_pv_code.setVisibility(View.VISIBLE);
     }
 
-//    boolean isUserExists(String phone) {
-//
-//        return false;
-//    }
+    public void loginUser(EditText etLoginEmail, EditText etLoginPassword) {
+
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.[a-z]+";
+
+        if (etLoginEmail.length() == 0 || !etLoginEmail.getText().toString().matches(emailPattern)) {
+            etLoginEmail.setError("Email is required");
+        }
+
+        //TODO send variables to server
+
+    }
+
+    public void registerUser(EditText etRegisterName, EditText etRegisterEmail,
+                             EditText etRegisterPassword, EditText etRegisterConfPassword) {
 
 
-//    void startNextActivity(boolean isUserExists) {
-//        if (isUserExists) startActivity(new Intent(this, UserLoginActivity.class));
-//        else startActivity(context, new Intent(context, UserRegisterActivity.class));
-//
-//    }
+    }
 
+    public interface UserAuthListener {
+        void onLogin();
+
+        void onRegister();
+    }
 
     public String getPhoneNumber() {
         return phoneNumber;

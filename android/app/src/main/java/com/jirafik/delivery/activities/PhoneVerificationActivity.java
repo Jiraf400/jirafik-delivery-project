@@ -51,7 +51,17 @@ public class PhoneVerificationActivity extends AppCompatActivity {
         authService = new AuthenticationService(this);
 
         btn_phone_submit.setOnClickListener(view -> authService.enterPhoneNumber(et_pv_phone, et_pv_code,
-                tv_enter_phone, tv_notification));
+                tv_enter_phone, tv_notification, new AuthenticationService.UserAuthListener() {
+                    @Override
+                    public void onLogin() {
+                        startActivity(new Intent(getApplicationContext(), UserLoginActivity.class));
+                    }
+
+                    @Override
+                    public void onRegister() {
+                        startActivity(new Intent(getApplicationContext(), UserRegisterActivity.class));
+                    }
+                }));
 
     }
 }
