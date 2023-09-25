@@ -29,12 +29,10 @@ import java.util.TimerTask;
 
 public class PhoneVerificationActivity extends AppCompatActivity {
 
-    Button btn_phone_submit;
+    Button btn_phone_submit, btn_code_submit;
     TextView tv_enter_phone, tv_notification;
     EditText et_pv_phone, et_pv_code;
-    boolean isUserExists;
     String sentCode;
-
 
     AuthenticationService authService;
 
@@ -44,24 +42,28 @@ public class PhoneVerificationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_phone_verification);
 
         btn_phone_submit = findViewById(R.id.btn_phone_submit);
+        btn_code_submit = findViewById(R.id.btn_code_submit);
         et_pv_phone = findViewById(R.id.et_pv_phone);
         et_pv_code = findViewById(R.id.et_pv_code);
         tv_enter_phone = findViewById(R.id.tv_enter_phone);
         tv_notification = findViewById(R.id.tv_notification);
         authService = new AuthenticationService(this);
 
-        btn_phone_submit.setOnClickListener(view -> authService.enterPhoneNumber(et_pv_phone, et_pv_code,
-                tv_enter_phone, tv_notification, new AuthenticationService.UserAuthListener() {
-                    @Override
-                    public void onLogin() {
-                        startActivity(new Intent(getApplicationContext(), UserLoginActivity.class));
-                    }
+        btn_phone_submit.setOnClickListener(view -> authService.checkEnteredPhoneNumber(et_pv_phone, et_pv_code,
+                tv_enter_phone, tv_notification, btn_phone_submit, btn_code_submit));
 
-                    @Override
-                    public void onRegister() {
-                        startActivity(new Intent(getApplicationContext(), UserRegisterActivity.class));
-                    }
-                }));
+        btn_code_submit.setOnClickListener(view -> authService.verifySentCode(et_pv_code,
+                new AuthenticationService.UserAuthListener() {
+            @Override
+            public void onLogin() {
+                startActivity(new Intent(getApplicationContext(), UserLoginActivity.class));
+            }
+
+            @Override
+            public void onRegister() {
+                startActivity(new Intent(getApplicationContext(), UserRegisterActivity.class));
+            }
+        }));
 
     }
 }
