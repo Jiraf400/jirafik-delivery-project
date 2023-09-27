@@ -13,4 +13,6 @@
     <string name="confirm_password">Confirm password</string>
     <string name="where_to_deliver">Where to deliver: </string>
     <string name="restaurants">Restaurants</string>
+    <string name="groceries">Groceries</string>
+    <string name="medicines">Medicines</string>
 </resources>
