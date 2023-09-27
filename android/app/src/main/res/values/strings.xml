@@ -11,4 +11,6 @@
     <string name="fill_authorization_fields">Fill authorization fields</string>
     <string name="full_name">Full name</string>
     <string name="confirm_password">Confirm password</string>
+    <string name="where_to_deliver">Where to deliver: </string>
+    <string name="restaurants">Restaurants</string>
 </resources>

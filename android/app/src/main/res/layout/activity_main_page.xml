@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/light_blue"
+        tools:context=".activities.MainPageActivity">
+
+
+    <LinearLayout
+            android:id="@+id/main_header"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/blueBeau"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="16dp"
+            android:orientation="horizontal">
+
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+                android:id="@+id/user_avatar"
+                android:layout_width="76dp"
+                android:layout_height="76dp"
+                android:background="@color/white"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:roundPercent="1"
+                app:srcCompat="@drawable/img" />
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="12dp"
+                android:layout_marginStart="12dp">
+
+            <TextView
+                    android:id="@+id/address_template"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/where_to_deliver"
+                    android:textColor="@color/dimGray"
+                    android:textSize="24sp"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/roboto"
+                    android:orientation="horizontal" />
+
+            <TextView
+                    android:id="@+id/users_address"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="user's address here"
+                    android:layout_centerInParent="true"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/roboto" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="214dp"
+            android:background="#008000"
+            app:layout_constraintTop_toBottomOf="@id/main_header"
+            app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.cardview.widget.CardView
+                android:id="@+id/cv_restaurants"
+                android:layout_width="140dp"
+                android:layout_height="150dp"
+                app:cardCornerRadius="12dp"
+                android:elevation="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="16dp">
+
+            <ImageView
+                    android:id="@+id/roundedImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/restaurants"
+                    android:background="@color/white"
+                    android:contentDescription="@string/restaurants"
+                    android:scaleType="centerCrop" />
+
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/restaurants"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"/>
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
