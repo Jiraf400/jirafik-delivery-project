@@ -7,6 +7,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.jirafik.delivery.models.User;
+import com.jirafik.delivery.models.UserToLogin;
+
 import java.util.Random;
 
 public class AuthenticationService {
@@ -33,7 +36,7 @@ public class AuthenticationService {
         //logic to send phone to server
         //logic to send phone to server
 
-        setUserExists(true);
+        setUserExists(true); //temporary hardcoded for testing
         setVerifCode(generateVerificationCode());
 
         String phone = "+" + et_pv_phone.getText().toString();
@@ -43,13 +46,19 @@ public class AuthenticationService {
                 btn_phone_submit, btn_code_submit, phone);
     }
 
-    public void loginUser(EditText etLoginEmail, EditText etLoginPassword) {
+    public void loginUser(EditText etLoginEmail, EditText etLoginPassword, UserEnterListener userEnterListener) {
 
-        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.[a-z]+";
+        boolean fieldsAreCorrect = checkLoginFields(etLoginEmail, etLoginPassword);
 
-        if (etLoginEmail.length() == 0 || !etLoginEmail.getText().toString().matches(emailPattern)) {
-            etLoginEmail.setError("Email is required");
-        }
+        if (fieldsAreCorrect) {
+            UserToLogin user = new UserToLogin();
+
+            user.setEmail(etLoginEmail.getText().toString());
+            user.setPassword(etLoginPassword.getText().toString());
+
+            userEnterListener.onSuccess();
+        } else userEnterListener.onError("Please check all fields to be filled.");
+
 
         //logic to send user to server
         //logic to send user to server
@@ -58,14 +67,74 @@ public class AuthenticationService {
     }
 
     public void registerUser(EditText etRegisterName, EditText etRegisterEmail,
-                             EditText etRegisterPassword, EditText etRegisterConfPassword) {
+                             EditText etRegisterPassword, EditText etRegisterConfPassword,
+                             UserEnterListener userRegisterListener) {
+
+        boolean fieldsAreCorrect = checkRegisterFields(etRegisterName, etRegisterEmail,
+                etRegisterPassword, etRegisterConfPassword);
 
         String phone = getPhoneNumber();
 
-        //logic to send user to server
-        //logic to send user to server
-        //logic to send user to server
+        if (fieldsAreCorrect) {
+            User user = new User();
+            user.setEmail(etRegisterEmail.getText().toString());
+            user.setName(etRegisterName.getText().toString());
+            user.setPhone(phone);
+            user.setPassword(etRegisterPassword.getText().toString());
 
+            userRegisterListener.onSuccess();
+        } else {
+            userRegisterListener.onError("Please check all fields to be filled.");
+        }
+
+        //logic to send user to server
+        //logic to send user to server
+        //logic to send user to server
+    }
+
+    private boolean checkRegisterFields(EditText etRegisterUsername, EditText etRegisterEmail,
+                                        EditText etRegisterPassword, EditText passConfirm) {
+
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.[a-z]+";
+
+        if (etRegisterUsername.length() == 0) {
+            etRegisterUsername.setError("This field is required");
+            return false;
+        }
+
+        if (etRegisterEmail.length() == 0 || !etRegisterEmail.getText().toString().matches(emailPattern)) {
+            etRegisterEmail.setError("Email is required");
+            return false;
+        }
+        if (etRegisterPassword.length() == 0) {
+            etRegisterPassword.setError("Password is required");
+            return false;
+        } else if (etRegisterPassword.length() < 8) {
+            etRegisterPassword.setError("Password must be minimum 8 characters");
+            return false;
+        } else if (!etRegisterPassword.getText().toString().equals(passConfirm.getText().toString())) {
+            etRegisterPassword.setError("Passwords are not equal");
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean checkLoginFields(EditText etLoginEmail, EditText etLoginPassword) {
+
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.[a-z]+";
+
+        if (etLoginEmail.length() == 0 || !etLoginEmail.getText().toString().matches(emailPattern)) {
+            etLoginEmail.setError("Email is required");
+            return false;
+        }
+
+        if (etLoginPassword.length() < 8) {
+            etLoginPassword.setError("Password must be minimum 8 characters");
+            return false;
+        }
+
+        return true;
     }
 
     //code check temporary hardcoded here. In future will be moved to server
@@ -115,7 +184,12 @@ public class AuthenticationService {
         void onLogin();
 
         void onRegister();
+    }
 
+    public interface UserEnterListener {
+        void onError(String msg);
+
+        void onSuccess();
     }
 
     public String getPhoneNumber() {
