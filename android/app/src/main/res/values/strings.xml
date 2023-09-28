@@ -15,4 +15,8 @@
     <string name="restaurants">Restaurants</string>
     <string name="groceries">Groceries</string>
     <string name="medicines">Medicines</string>
+    <string name="pet_shops">Pet Shops</string>
+    <string name="beauty">Beauty</string>
+    <string name="electronics">Electronics</string>
+    <string name="user_s_address_here">user\'s address here</string>
 </resources>
