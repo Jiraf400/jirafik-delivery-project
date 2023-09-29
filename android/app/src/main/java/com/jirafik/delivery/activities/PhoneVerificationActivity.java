@@ -49,21 +49,22 @@ public class PhoneVerificationActivity extends AppCompatActivity {
         tv_notification = findViewById(R.id.tv_notification);
         authService = new AuthenticationService(this);
 
-        btn_phone_submit.setOnClickListener(view -> authService.checkEnteredPhoneNumber(et_pv_phone, et_pv_code,
-                tv_enter_phone, tv_notification, btn_phone_submit, btn_code_submit));
+        btn_phone_submit.setOnClickListener(view ->
+                authService.checkEnteredPhoneNumber(et_pv_phone, et_pv_code,
+                        tv_enter_phone, tv_notification, btn_phone_submit, btn_code_submit));
 
         btn_code_submit.setOnClickListener(view -> authService.verifySentCode(et_pv_code,
                 new AuthenticationService.UserAuthListener() {
-            @Override
-            public void onLogin() {
-                startActivity(new Intent(getApplicationContext(), UserLoginActivity.class));
-            }
+                    @Override
+                    public void onLogin() {
+                        startActivity(new Intent(getApplicationContext(), UserLoginActivity.class));
+                    }
 
-            @Override
-            public void onRegister() {
-                startActivity(new Intent(getApplicationContext(), UserRegisterActivity.class));
-            }
-        }));
+                    @Override
+                    public void onRegister() {
+                        startActivity(new Intent(getApplicationContext(), UserRegisterActivity.class));
+                    }
+                }));
 
     }
 }
