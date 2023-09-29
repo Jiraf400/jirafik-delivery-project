@@ -4,11 +4,11 @@
     <string name="number">Enter your phone number</string>
     <string name="here">Here</string>
     <string name="submit">SUBMIT</string>
-    <string name="app_title">Jiraf Delivery App</string>
+    <string name="app_title">Jiraf\'s Delivery App</string>
     <string name="havent_received_code">If you haven\'t received the code make sure that \nentered number is correct.</string>
     <string name="password">Password</string>
     <string name="email">Email</string>
-    <string name="fill_authorization_fields">Fill authorization fields</string>
+    <string name="fill_authorization_fields">Please fill authorization fields</string>
     <string name="full_name">Full name</string>
     <string name="confirm_password">Confirm password</string>
     <string name="where_to_deliver">Where to deliver: </string>
@@ -19,4 +19,11 @@
     <string name="beauty">Beauty</string>
     <string name="electronics">Electronics</string>
     <string name="user_s_address_here">user\'s address here</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="please_fill_registration_fields">Please fill registration fields</string>
+    <string name="welcome">Welcome</string>
+    <string name="promo_codes_and_sales">Promo codes and sales</string>
+    <string name="promo_here">promo here</string>
+    <string name="pizza_15_sale">PIZZA 15% SALE</string>
 </resources>

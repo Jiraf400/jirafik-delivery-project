@@ -5,26 +5,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".activities.WaitActivity"
-        android:background="@drawable/bg_waves_light"
+        android:background="@color/darkBrown"
         android:fontFamily="@font/roboto">
 
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="@color/lightBrown"
             android:text="@string/app_title"
             android:textSize="24sp"
             android:textAlignment="center"
+            android:textColor="@color/white"
             android:layout_marginTop="64dp"
             android:paddingVertical="24dp" />
 
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Welcome"
+            android:text="@string/welcome"
             android:gravity="center_vertical"
             android:textSize="42sp"
             android:paddingBottom="32dp"
+            android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"

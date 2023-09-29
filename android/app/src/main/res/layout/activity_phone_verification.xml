@@ -5,7 +5,7 @@
         android:id="@+id/phone_verification"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_waves_light"
+        android:background="@color/darkBrown"
         tools:context=".activities.PhoneVerificationActivity">
 
     <TextView
@@ -16,20 +16,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:textSize="36sp"
+            android:textColor="@color/white"
             android:layout_marginTop="36dp"
             android:textAlignment="center" />
 
     <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="126dp"
-            android:layout_marginBottom="88dp"
-            app:cardBackgroundColor="@color/white"
+            android:layout_marginVertical="100dp"
+            app:cardBackgroundColor="@color/lightBrown"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:backgroundTint="@color/light_blue"
             app:cardElevation="8dp"
-            app:cardUseCompatPadding="true">
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="12dp"
+            android:elevation="10dp">
 
 
         <RelativeLayout
@@ -43,7 +44,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/number"
-                    android:textSize="26sp"
+                    android:textSize="22sp"
+                    android:textColor="@color/white"
                     android:layout_marginHorizontal="36dp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="16dp"
@@ -56,8 +58,12 @@
                     android:layout_marginTop="120dp"
                     android:paddingVertical="16dp"
                     android:hint="@string/here"
+                    android:textColor="@color/black"
+                    android:drawableStart="@drawable/phone_svgrepo_com"
+                    android:drawablePadding="6dp"
                     android:inputType="phone"
-                    android:fontFamily="@font/roboto" />
+                    android:fontFamily="@font/roboto"
+                    android:background="@drawable/rounded_edittext" />
 
             <EditText
                     android:id="@+id/et_pv_code"
@@ -71,7 +77,6 @@
                     android:visibility="gone" />
 
 
-
             <TextView
                     android:id="@+id/tv_notification"
                     android:layout_width="wrap_content"
@@ -81,7 +86,7 @@
                     android:textSize="16sp"
                     android:paddingTop="16dp"
                     android:textColor="#C0C0C0"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
             <Button
                     android:id="@+id/btn_phone_submit"
@@ -90,12 +95,13 @@
                     style="@style/Widget.Material3.FloatingActionButton.Surface"
                     android:text="@string/submit"
                     android:textSize="24sp"
-                    android:textColor="@color/light_blue"
-                    android:backgroundTint="#98c1d9"
+                    android:drawableStart=""
+                    android:textColor="@color/black"
+                    android:backgroundTint="@color/white"
                     android:layout_marginBottom="32dp"
-                    android:paddingHorizontal="24dp"
+                    android:paddingHorizontal="36dp"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginHorizontal="112dp"
+                    android:layout_centerHorizontal="true"
                     android:fontFamily="@font/roboto_light" />
 
             <Button
@@ -112,7 +118,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_marginHorizontal="112dp"
                     android:fontFamily="@font/roboto_light"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

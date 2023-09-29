@@ -5,7 +5,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".activities.UserLoginActivity"
-        android:background="@drawable/bg_waves_light">
+        android:background="@color/darkBrown">
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="36sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="24dp"
+            android:textAlignment="center" />
 
     <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -15,7 +27,7 @@
             app:cardBackgroundColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:backgroundTint="@color/light_blue"
+            android:backgroundTint="@color/lightBrown"
             app:cardElevation="8dp"
             app:cardUseCompatPadding="true">
 
@@ -31,8 +43,9 @@
                     android:layout_height="wrap_content"
                     android:text="@string/fill_authorization_fields"
                     android:layout_centerHorizontal="true"
-                    android:textSize="28sp"
-                    android:layout_marginHorizontal="36dp"
+                    android:textSize="24sp"
+                    android:textColor="@color/white"
+                    android:layout_marginHorizontal="24dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/roboto" />
 
@@ -44,11 +57,15 @@
                     android:paddingVertical="16dp"
                     android:hint="@string/email"
                     android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:background="@drawable/rounded_edittext"
+                    android:drawableStart="@drawable/mail_svgrepo_com"
+                    android:drawablePadding="6dp"
                     android:inputType="textEmailAddress"
                     android:layout_centerVertical="true"
                     android:layout_below="@id/tv_fill_fields"
                     android:layout_marginTop="64dp"
-                    android:fontFamily="@font/roboto"/>
+                    android:fontFamily="@font/roboto" />
 
             <EditText
                     android:id="@+id/et_login_password"
@@ -58,10 +75,14 @@
                     android:hint="@string/password"
                     android:textSize="20sp"
                     android:inputType="textPassword"
+                    android:textColor="@color/black"
+                    android:background="@drawable/rounded_edittext"
+                    android:drawableStart="@drawable/password_lock_solid_svgrepo_com"
+                    android:drawablePadding="6dp"
                     android:layout_centerVertical="true"
                     android:layout_below="@id/et_login_email"
                     android:layout_marginTop="64dp"
-                    android:fontFamily="@font/roboto"/>
+                    android:fontFamily="@font/roboto" />
 
             <Button
                     android:id="@+id/btn_login_submit"
@@ -70,14 +91,13 @@
                     style="@style/Widget.Material3.FloatingActionButton.Surface"
                     android:text="@string/submit"
                     android:textSize="24sp"
-                    android:textColor="@color/light_blue"
-                    android:backgroundTint="#98c1d9"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@color/white"
                     android:layout_marginBottom="32dp"
-                    android:paddingHorizontal="24dp"
+                    android:paddingHorizontal="36dp"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginHorizontal="112dp"
-                    android:fontFamily="@font/roboto_light"/>
+                    android:fontFamily="@font/roboto_light" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 

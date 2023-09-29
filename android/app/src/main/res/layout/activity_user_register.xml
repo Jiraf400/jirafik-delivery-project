@@ -5,18 +5,30 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".activities.UserRegisterActivity"
-        android:background="@drawable/bg_waves_light">
+        android:background="@color/darkBrown">
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/register"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="36sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="24dp"
+            android:textAlignment="center" />
 
     <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="88dp"
             android:layout_marginBottom="88dp"
-            app:cardBackgroundColor="@color/white"
+            app:cardBackgroundColor="@color/lightBrown"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:backgroundTint="@color/light_blue"
             app:cardElevation="8dp"
+            app:cardCornerRadius="12dp"
             app:cardUseCompatPadding="true">
 
         <RelativeLayout
@@ -29,10 +41,11 @@
                     android:id="@+id/tv_reg_fill"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Fill registration fields"
+                    android:text="@string/please_fill_registration_fields"
                     android:layout_centerHorizontal="true"
-                    android:textSize="28sp"
-                    android:layout_marginHorizontal="36dp"
+                    android:textSize="24sp"
+                    android:textColor="@color/white"
+                    android:layout_marginHorizontal="24dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/roboto" />
 
@@ -44,6 +57,9 @@
                     android:paddingVertical="16dp"
                     android:hint="@string/full_name"
                     android:textSize="20sp"
+                    android:drawableStart="@drawable/person_svgrepo_com"
+                    android:drawablePadding="6dp"
+                    android:background="@drawable/rounded_edittext"
                     android:inputType="textEmailAddress"
                     android:layout_centerVertical="true"
                     android:layout_marginTop="32dp"
@@ -59,6 +75,9 @@
                     android:hint="@string/email"
                     android:textSize="20sp"
                     android:inputType="textEmailAddress"
+                    android:background="@drawable/rounded_edittext"
+                    android:drawableStart="@drawable/mail_svgrepo_com"
+                    android:drawablePadding="6dp"
                     android:layout_below="@id/et_register_name"
                     android:layout_centerVertical="true"
                     android:layout_marginTop="24dp"
@@ -72,6 +91,9 @@
                     android:hint="@string/password"
                     android:textSize="20sp"
                     android:layout_centerVertical="true"
+                    android:background="@drawable/rounded_edittext"
+                    android:drawableStart="@drawable/password_lock_solid_svgrepo_com"
+                    android:drawablePadding="6dp"
                     android:layout_marginTop="24dp"
                     android:inputType="textPassword"
                     android:layout_below="@id/et_register_email"
@@ -85,6 +107,9 @@
                     android:hint="@string/confirm_password"
                     android:textSize="20sp"
                     android:layout_centerVertical="true"
+                    android:background="@drawable/rounded_edittext"
+                    android:drawableStart="@drawable/password_lock_solid_svgrepo_com"
+                    android:drawablePadding="6dp"
                     android:layout_marginTop="24dp"
                     android:inputType="textPassword"
                     android:layout_below="@id/et_register_password"
@@ -97,13 +122,12 @@
                     style="@style/Widget.Material3.FloatingActionButton.Surface"
                     android:text="@string/submit"
                     android:textSize="24sp"
-                    android:textColor="@color/light_blue"
-                    android:backgroundTint="#98c1d9"
-                    android:layout_marginBottom="24dp"
-                    android:paddingHorizontal="24dp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@color/white"
+                    android:layout_marginBottom="32dp"
+                    android:paddingHorizontal="36dp"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginHorizontal="112dp"
                     android:fontFamily="@font/roboto_light" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
