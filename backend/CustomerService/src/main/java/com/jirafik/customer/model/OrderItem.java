@@ -1,15 +1,12 @@
 package com.jirafik.customer.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.jirafik.customer.model.shop.ShopItem;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
@@ -33,8 +30,12 @@ public class OrderItem {
     @Column(name = "quantity", nullable = false)
     private int quantity;
 
+    @Column(name = "image_link", nullable = false)
+    private String image;
+
     @JoinColumn(name = "order_id")
     @ManyToOne
+    @JsonIgnore
     private Order order;
 }
 

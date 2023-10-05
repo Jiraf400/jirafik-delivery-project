@@ -1,17 +1,13 @@
 package com.jirafik.customer.controller;
 
-import com.electronwill.nightconfig.core.conversion.Path;
 import com.jirafik.customer.model.Order;
 import com.jirafik.customer.service.OrderService;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Optional;
 
-@Controller
+@RestController
 @RequestMapping("/api/v1/orders")
 public class CustomerController {
 
@@ -21,20 +17,26 @@ public class CustomerController {
         this.orderService = orderService;
     }
 
-    //TODO add pagination
-    @GetMapping("/")
-    public List<Order> getOrderList() {
-        return orderService.getOrderList();
+    @GetMapping("/pages/{page}/{size}")
+    public ResponseEntity<Object> getOrderList(@PathVariable(required = false) Optional<Integer> page,
+                                               @PathVariable(required = false) Optional<Integer> size) {
+
+        return orderService.getOrderList(page, size);
     }
 
     @GetMapping("/{id}")
-    public Order getOrderById(@PathVariable int id) {
+    public ResponseEntity<Object> getOrderById(@PathVariable(required = false) int id) {
         return orderService.getOrderById(id);
+    }
+
+    @GetMapping("/hello")
+    public String sayHello() {
+        return "<h4>Hello</h4>";
     }
 
     //TODO create ShopItemDto with required fields;
     @PostMapping("/post")
-    public Order getOrderById() {
+    public Order createOrder() {
         return null;
     }
 
