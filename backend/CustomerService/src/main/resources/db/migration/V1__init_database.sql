@@ -1,22 +1,21 @@
 create table orders
 (
-    id             bigserial not null unique primary key,
-    courier_id     bigint    not null,
-    customer_id    bigint    not null,
-    shop_id        bigint    not null,
-    order_status   varchar(255),
-    generated_date timestamp(6)
+    id             bigserial    not null primary key,
+    courier_id     bigint,
+    customer_id    bigint       not null,
+    shop_id        bigint       not null,
+    order_status   varchar(255) not null,
+    generated_date timestamp(6) not null
 );
 
 create table order_items
 (
-    id         bigserial      not null unique primary key,
-    price      numeric(38, 2) not null,
-    quantity   integer        not null,
-    shop_item  varchar(255)   not null,
-    image_link varchar(255)   not null,
-    order_id   bigint,
-    constraint conKeyOrders foreign key (order_id) references orders
+    id           bigserial not null primary key,
+    price        integer   not null,
+    quantity     integer   not null,
+    shop_item_id bigint    not null,
+    order_id     bigint    not null,
+    constraint FKbioxgbv59vetrxe0ejfubep1w foreign key (order_id) references orders (id)
 );
 
 create sequence hibernate_sequence;
