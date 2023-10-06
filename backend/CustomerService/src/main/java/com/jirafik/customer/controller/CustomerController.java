@@ -1,6 +1,6 @@
 package com.jirafik.customer.controller;
 
-import com.jirafik.customer.model.Order;
+import com.jirafik.customer.dto.PostOrderDto;
 import com.jirafik.customer.service.OrderService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,15 +29,9 @@ public class CustomerController {
         return orderService.getOrderById(id);
     }
 
-    @GetMapping("/hello")
-    public String sayHello() {
-        return "<h4>Hello</h4>";
-    }
-
-    //TODO create ShopItemDto with required fields;
     @PostMapping("/post")
-    public Order createOrder() {
-        return null;
+    public ResponseEntity<Object> createOrder(@RequestBody PostOrderDto postOrderDto) {
+        return orderService.saveOrder(postOrderDto);
     }
 
 }

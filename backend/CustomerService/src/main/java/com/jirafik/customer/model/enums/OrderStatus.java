@@ -1,4 +1,4 @@
-package com.jirafik.customer.model;
+package com.jirafik.customer.model.enums;
 
 public enum OrderStatus {
     CUSTOMER_CREATED, CUSTOMER_PAID, CUSTOMER_CANCELLED,

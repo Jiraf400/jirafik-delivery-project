@@ -1,10 +1,12 @@
 package com.jirafik.customer.model;
 
 
+import com.jirafik.customer.model.enums.OrderStatus;
 import jakarta.persistence.*;
 
 import lombok.AllArgsConstructor;
 
+import lombok.Builder;
 import lombok.Data;
 
 import lombok.NoArgsConstructor;
@@ -18,6 +20,7 @@ import java.util.List;
 import static jakarta.persistence.EnumType.STRING;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
+@Builder
 @Entity
 @Table(name = "Orders")
 @Data
@@ -26,7 +29,6 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 public class Order {
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
     private Long id;
 
     @Column(name = "customer_id", nullable = false)
@@ -35,7 +37,7 @@ public class Order {
     @Column(name = "shop_id", nullable = false)
     private Long shopId;
 
-    @Column(name = "courier_id", nullable = false)
+    @Column(name = "courier_id")
     private Long courierId;
 
     @CreationTimestamp

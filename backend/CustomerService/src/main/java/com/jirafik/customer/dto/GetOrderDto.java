@@ -1,7 +1,7 @@
 package com.jirafik.customer.dto;
 
 import com.jirafik.customer.model.OrderItem;
-import com.jirafik.customer.model.OrderStatus;
+import com.jirafik.customer.model.enums.OrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,6 +18,6 @@ public class GetOrderDto {
     private Long id;
     private Timestamp timestamp;
     private List<OrderItem> orderItems;
-    private ShopDto shopDto;
+    private String shopName;
     private OrderStatus status;
 }

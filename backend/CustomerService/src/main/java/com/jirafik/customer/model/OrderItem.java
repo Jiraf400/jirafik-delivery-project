@@ -21,19 +21,16 @@ public class OrderItem {
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
 
-    @Column(name = "shop_item", nullable = false)
-    private String shopItem;
-
     @Column(name = "price", nullable = false)
-    private BigDecimal price;
+    private int price;
 
     @Column(name = "quantity", nullable = false)
     private int quantity;
 
-    @Column(name = "image_link", nullable = false)
-    private String image;
+    @Column(name = "shop_item_id", nullable = false)
+    private Long shopItemId;
 
-    @JoinColumn(name = "order_id")
+    @JoinColumn(name = "order_id", referencedColumnName = "id", nullable = false)
     @ManyToOne
     @JsonIgnore
     private Order order;
