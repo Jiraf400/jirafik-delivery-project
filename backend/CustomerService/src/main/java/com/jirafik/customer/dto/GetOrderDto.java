@@ -18,6 +18,6 @@ public class GetOrderDto {
     private Long id;
     private Timestamp timestamp;
     private List<OrderItem> orderItems;
-    private String shopName;
+    private Long shopId;
     private OrderStatus status;
 }

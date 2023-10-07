@@ -3,15 +3,16 @@ package com.jirafik.customer.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostOrderDto {
-    private Long shopId;
-    private int price;
-    private List<ShopItemDto> itemList;
+public class GetOrderListDto {
+
+    private List<GetOrderDto> dtoList;
+    private int pageIndex;
+    private int pageSize;
 }
+
