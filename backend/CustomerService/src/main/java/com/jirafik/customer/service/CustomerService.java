@@ -20,12 +20,12 @@ import java.util.Optional;
 
 @Slf4j
 @Service
-public class OrderService {
+public class CustomerService {
     private final OrderRepository orderRepository;
     private final OrderItemRepository orderItemRepository;
     private final ResponseHandler responseHandler = new ResponseHandler();
 
-    public OrderService(OrderRepository orderRepository, OrderItemRepository orderItemRepository) {
+    public CustomerService(OrderRepository orderRepository, OrderItemRepository orderItemRepository) {
         this.orderRepository = orderRepository;
         this.orderItemRepository = orderItemRepository;
     }
@@ -68,9 +68,6 @@ public class OrderService {
         }
 
         order.setOrderItems(orderItemList);
-
-
-        log.info("shop and shopItem saved to db");
 
         try {
             orderRepository.save(order);
