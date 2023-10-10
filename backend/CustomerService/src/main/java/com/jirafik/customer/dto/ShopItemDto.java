@@ -10,6 +10,4 @@ import lombok.NoArgsConstructor;
 public class ShopItemDto {
     private Long shopItemId;
     private int quantity;
-    private int description;
-    private String image;
 }
