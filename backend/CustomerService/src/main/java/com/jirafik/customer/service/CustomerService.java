@@ -46,8 +46,10 @@ public class CustomerService {
 
         //here should be request to ShopService to find image and description of orderItem
 
-        if (orderFromDb.isEmpty())
-            throw new OrderNotFoundException("Order not found with id = " + id);
+        if (orderFromDb.isEmpty()) {
+            log.error("Order not found with id = " + id);
+            return new ResponseEntity<>("Order not found with id = " + id, HttpStatus.NOT_FOUND);
+        }
 
         GetOrderDto orderDto = orderMapper.mapOrderToGetDto(orderFromDb.get());
 
