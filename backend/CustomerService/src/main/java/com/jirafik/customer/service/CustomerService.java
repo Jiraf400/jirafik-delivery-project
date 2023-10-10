@@ -2,6 +2,7 @@ package com.jirafik.customer.service;
 
 import com.jirafik.customer.dto.PostOrderDto;
 import com.jirafik.customer.dto.ShopItemDto;
+import com.jirafik.customer.exceptions.OrderNotFoundException;
 import com.jirafik.customer.handler.ResponseHandler;
 import com.jirafik.customer.model.*;
 import com.jirafik.customer.model.enums.OrderStatus;
@@ -37,7 +38,12 @@ public class CustomerService {
     }
 
     public ResponseEntity<Object> getOrderById(int id) {
-        return responseHandler.generateOrderResponse(HttpStatus.OK, orderRepository.findById((long) id).get());
+        Optional<Order> orderFromDb = orderRepository.findById((long) id);
+
+        if (orderFromDb.isEmpty())
+            throw new OrderNotFoundException("Order not found with id = " + id);
+
+        return responseHandler.generateOrderResponse(HttpStatus.OK, orderFromDb.get());
     }
 
     public ResponseEntity<Object> saveOrder(PostOrderDto postOrderDto) {
