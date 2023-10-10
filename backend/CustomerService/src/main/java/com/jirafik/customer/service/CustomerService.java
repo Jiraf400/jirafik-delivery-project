@@ -5,7 +5,6 @@ import com.jirafik.customer.dto.ShopItemDto;
 import com.jirafik.customer.handler.ResponseHandler;
 import com.jirafik.customer.model.*;
 import com.jirafik.customer.model.enums.OrderStatus;
-import com.jirafik.customer.repository.OrderItemRepository;
 import com.jirafik.customer.repository.OrderRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -22,24 +21,19 @@ import java.util.Optional;
 @Service
 public class CustomerService {
     private final OrderRepository orderRepository;
-    private final OrderItemRepository orderItemRepository;
     private final ResponseHandler responseHandler = new ResponseHandler();
 
-    public CustomerService(OrderRepository orderRepository, OrderItemRepository orderItemRepository) {
+    public CustomerService(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
-        this.orderItemRepository = orderItemRepository;
     }
 
-    public ResponseEntity<Object> getOrderList(Optional<Integer> page, Optional<Integer> pageSize) {
+    public ResponseEntity<Object> getOrderList(Optional<Integer> page) {
 
-        if (page.isEmpty() || pageSize.isEmpty()) {
-            page = Optional.of(0);
-            pageSize = Optional.of(5);
-        }
+        int defaultPageSize = 5;
 
-        Page<Order> orderList = orderRepository.findAll(PageRequest.of(page.get(), pageSize.get()));
+        Page<Order> orderList = orderRepository.findAll(PageRequest.of(page.orElse(0), defaultPageSize));
 
-        return responseHandler.generateGetOrderDtoList(HttpStatus.OK, orderList, page.get(), pageSize.get());
+        return responseHandler.generateGetOrderDtoList(HttpStatus.OK, orderList, page.orElse(0), defaultPageSize);
     }
 
     public ResponseEntity<Object> getOrderById(int id) {
