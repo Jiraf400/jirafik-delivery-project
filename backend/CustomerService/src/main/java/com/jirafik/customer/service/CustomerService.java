@@ -30,10 +30,11 @@ public class CustomerService {
     public ResponseEntity<Object> getOrderList(int page) {
 
         if (page > 0) page = page - 1;
-
         int defaultPageSize = 5;
 
-        Page<Order> orderList = orderRepository.findAll(PageRequest.of(page, defaultPageSize));
+        Page<Order> orderPage = orderRepository.findAll(PageRequest.of(page, defaultPageSize));
+
+        List<Order> orderList = orderPage.getContent();
 
         GetOrderListDto getOrderListDto = orderMapper.mapOrderListToGetOrderListDto(orderList, page, defaultPageSize);
 
