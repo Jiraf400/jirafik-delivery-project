@@ -1,9 +1,0 @@
-package com.jirafik.customer.repository;
-
-import com.jirafik.customer.model.OrderItem;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
-@Repository
-public interface OrderItemRepository extends JpaRepository<OrderItem, Long> {
-}
