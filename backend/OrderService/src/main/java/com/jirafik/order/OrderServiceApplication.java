@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @Slf4j
 @SpringBootApplication
-public class CustomerServiceApplication {
+public class OrderServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CustomerServiceApplication.class, args);
+		SpringApplication.run(OrderServiceApplication.class, args);
 	}
 
 }
