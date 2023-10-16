@@ -1,0 +1,38 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        #        - id: resource
+        #          uri: http://127.0.0.1:9191
+        #          predicates:
+        #            - Path=/api/v1/orders/all
+        #          filters:
+        #            - TokenRelay=
+        #            - RemoveRequestHeader=Cookie
+
+        - id: orders-service
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/api/v1/orders/**
+          filters:
+            - TokenRelay=
+            - RemoveRequestHeader=Cookie
+
+
+  security:
+    oauth2:
+      client:
+        registration:
+          gateway:
+            provider: spring
+            client-id: gateway
+            client-secret: secret
+            authorization-grant-type: authorization_code
+            redirect-uri: "http://127.0.0.1:8080/login/oauth2/code/gateway"
+            scope: openid,resource.read
+        provider:
+          spring:
+            issuer-uri: http://localhost:9000
