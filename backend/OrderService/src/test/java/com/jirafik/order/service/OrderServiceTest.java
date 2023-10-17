@@ -98,7 +98,7 @@ class OrderServiceTest {
 
         int defaultOrderId = 1;
 
-        when(repository.findById(Mockito.any(Long.class))).thenReturn(null);
+        when(repository.findById(Mockito.any(Long.class))).thenReturn(Optional.empty());
 
         String errorResponse = (String) underTestService.getOrderById(defaultOrderId).getBody();
 
