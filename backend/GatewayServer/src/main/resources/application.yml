@@ -1,18 +1,37 @@
 server:
   port: 8080
 
+logging:
+  level:
+    org.springframework.cloud.gateway: trace
+
 spring:
   application:
-    name: CLOUD-GATEWAY
+    name: GATEWAY-SERVER
+  session:
+    store-type: redis
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
   cloud:
     gateway:
       default-filters:
         - TokenRelay=
+        - SaveSession
       routes:
         - id: route
           uri: http://localhost:9191/
           predicates:
             - Path=/**
+          filters:
+            - name: Retry
+              args:
+                retries: 10
+                methods: GET
+                backoff:
+                  firstBackoff: 1000ms
+                  maxBackoff: 5000ms
   security:
     oauth2:
       client:
