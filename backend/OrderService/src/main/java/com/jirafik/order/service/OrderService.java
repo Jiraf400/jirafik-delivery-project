@@ -44,9 +44,7 @@ public class OrderService {
 
         Optional<Order> orderFromDb = orderRepository.findById((long) id);
 
-        //here should be request to ShopService to find image and description of orderItem
-
-        if (orderFromDb == null) {
+        if (orderFromDb.isEmpty()) {
             log.error("Order not found with id = " + id);
             return new ResponseEntity<>("Order not found with id = " + id, HttpStatus.NOT_FOUND);
         }
