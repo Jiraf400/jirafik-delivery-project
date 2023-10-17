@@ -15,7 +15,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 
@@ -37,9 +36,6 @@ class OrderControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    @Mock
-    private OrderService orderService;
-
     @Autowired
     private OrderH2Repository testRepository;
 
@@ -50,9 +46,8 @@ class OrderControllerTest {
         testRepository.deleteAll();
     }
 
-
     @Test
-    void shouldGetOrderList() throws InterruptedException {
+    void shouldGetOrderList(){
 
         PostOrderDto orderDto = new PostOrderDto();
         orderDto.setShopId(1L);
@@ -61,13 +56,11 @@ class OrderControllerTest {
 
         restTemplate.postForObject(baseUrl + "/post", orderDto, Order.class);
 
-        Thread.sleep(1000);
-
-        GetOrderListDto response = restTemplate.getForObject(baseUrl + "/page=0", GetOrderListDto.class);
+        GetOrderListDto response = restTemplate.getForObject(baseUrl + "/all/p=1", GetOrderListDto.class);
 
         assertThat(response).isNotEqualTo(null);
         assertThat(response.getDtoList().get(0).getShopId()).isEqualTo(orderDto.getShopId());
-        assertThat(response.getPageIndex()).isEqualTo(0);
+        assertThat(response.getPageIndex()).isEqualTo(1);
     }
 
     @Test
