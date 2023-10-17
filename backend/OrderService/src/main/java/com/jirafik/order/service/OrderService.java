@@ -27,11 +27,12 @@ public class OrderService {
     }
 
     public ResponseEntity<Object> getOrderList(int page) {
+        if(page < 1)
+            return new ResponseEntity<>("Page index cannot be less than 1", HttpStatus.BAD_REQUEST);
 
-        if (page > 0) page = page - 1;
         int defaultPageSize = 5;
 
-        Page<Order> orderPage = orderRepository.findAll(PageRequest.of(page, defaultPageSize));
+        Page<Order> orderPage = orderRepository.findAll(PageRequest.of(page - 1, defaultPageSize));
 
         List<Order> orderList = orderPage.getContent();
 
